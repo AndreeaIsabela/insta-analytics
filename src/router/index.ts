@@ -1,28 +1,31 @@
-import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import Login from '../views/login/Login.vue'
 
-Vue.use(VueRouter)
-
-const routes: Array<RouteConfig> = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Login',
+    component: Login
   },
   {
-    path: '/login',
-    name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (login.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    path: '/albums',
+    name: 'Albums',
+    component: () => import(/* webpackChunkName: "albums" */ '../views/albums/Albums.vue')
+  },
+  {
+    path: '/stats',
+    name: 'Stats',
+    component: () => import(/* webpackChunkName: "stats" */ '../views/stats/Stats.vue')
+  },
+  {
+    path: '/photos',
+    name: 'Photos',
+    component: () => import(/* webpackChunkName: "photos" */ '../views/photos/Photos.vue')
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
