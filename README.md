@@ -1,4 +1,4 @@
-# iaw
+# insta-analytics
 
 ## Project setup
 ```
