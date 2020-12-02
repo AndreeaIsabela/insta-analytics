@@ -1,7 +1,8 @@
 import * as compression from 'compression';
+import * as express from 'express';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
-import { Router, Express, json, urlencoded } from 'express';
+import { join } from 'path';
 
 import { config } from '../config';
 
@@ -13,7 +14,7 @@ import { config } from '../config';
  * @param {} passport
  * @returns {Promise<void>}
  */
-export async function expressLoader(app: Express, router: Router, passport): Promise<void> {
+export async function expressLoader(app: express.Express, router: express.Router, passport): Promise<void> {
   // Useful if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
   // It shows the real origin IP in the heroku or Cloudwatch logs
   app.enable('trust proxy');
@@ -23,11 +24,17 @@ export async function expressLoader(app: Express, router: Router, passport): Pro
   app.use(compression());
 
   // Middleware that transforms the raw string of req.body into json
-  app.use(json());
-  app.use(urlencoded({ extended: true }));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
   // Load API routes
   app.use(config.api.prefix, router);
+
+  app.use(express.static(join(__dirname, '../../dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(join(__dirname, '../../dist/index.html'));
+  });
 
   app.use(morgan(config.loggerFormat));
 
