@@ -1,23 +1,22 @@
 import { defineComponent, reactive, toRefs, watch, nextTick, onBeforeUnmount, onMounted } from 'vue'
-// import { Component, Watch, Prop, Vue } from 'vue-property-decorator'
 import { create, color, Scrollbar, Rectangle, options, Circle } from '@amcharts/amcharts4/core'
 import { Bullet, XYCursor, XYChart, Legend, DateAxis, ValueAxis, LineSeries } from '@amcharts/amcharts4/charts'
 
 const TimelineChart = defineComponent({
   props: {
-    categories!: {
+    categories: {
       type: Array,
       default: () => {
         return []
       }
     },
-    data!: {
+    data: {
       type: Array,
       default: () => {
         return []
       }
     },
-    name!: {
+    name: {
       type: String,
       default: 'chartdiv'
     }
@@ -33,7 +32,7 @@ const TimelineChart = defineComponent({
     ]
     const { categories, data, name } = toRefs(props)
 
-    const setSeriesBullets = function (series: any, bulletType: string): void {
+    const setSeriesBullets = (series: any, bulletType: string): void => {
       let bullet
 
       if (bulletType === 'circle') {
@@ -41,7 +40,6 @@ const TimelineChart = defineComponent({
         bullet = series.bullets.push(new Circle())
         bullet.strokeWidth = 2
         bullet.radius = 5
-
         bullet.fill = color(white)
       } else if (bulletType === 'rectangle') {
         bullet = series.bullets.push(new Bullet())
@@ -53,12 +51,11 @@ const TimelineChart = defineComponent({
         rectangle.width = 8
         rectangle.height = 8
       }
-
       const bullethover = bullet.states.create('hover')
       bullethover.properties.scale = 1.3
     }
 
-    const createSeries = function (category: any, seriesColor: string): void {
+    const createSeries = (category: any, seriesColor: string): void => {
       options.queue = true
       options.minPolylineStep = 5
       options.onlyShowOnViewport = true
@@ -80,7 +77,7 @@ const TimelineChart = defineComponent({
       chart.invalidateData()
     }
 
-    const setChartCursor = function (): void {
+    const setChartCursor = (): void => {
       const red = '#E70036'
       chart.cursor = new XYCursor()
       chart.cursor.lineX.stroke = color(red)
@@ -88,8 +85,7 @@ const TimelineChart = defineComponent({
       chart.cursor.lineY.disabled = true
     }
 
-    const initLineChart = async function (): Promise<void> {
-      console.log(name)
+    const initLineChart = async (): Promise<void> => {
       chart = create(`chart-${name.value}`, XYChart)
       chart.responsive.enabled = true
       // Set input format for the dates
@@ -107,9 +103,7 @@ const TimelineChart = defineComponent({
       for (let i = 0; i < categoriesLength; i++) {
         createSeries(categories.value[i], colorList[i])
       }
-
       setChartCursor()
-
       chart.legend = new Legend()
       chart.scrollbarX = new Scrollbar()
     }
