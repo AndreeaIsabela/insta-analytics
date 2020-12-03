@@ -1,3 +1,4 @@
+import { facebookStrategy } from './strategies/facebook';
 
 export async function passportLoader(passport): Promise<void> {
   /**
@@ -14,4 +15,5 @@ export async function passportLoader(passport): Promise<void> {
     done(null, user);
   });
 
+  facebookStrategy(passport);
 };
