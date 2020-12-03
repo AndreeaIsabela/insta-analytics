@@ -24,6 +24,20 @@ export function userRouter(): Router {
       res.render('authenticated', { accessToken });
     }
   );
+
+  /**
+   * Route used to authenticate Instagram user.
+   */
+  router.get('/user/auth/instagram', (req: Request, res: Response): void => {
+    const url: string = 'https://api.instagram.com/oauth/authorize' +
+      `?client_id=${config.instagram.clientID}` +
+      `&redirect_uri=${config.instagram.callbackURL}` +
+      '&scope=user_profile,user_media' +
+      '&response_type=code';
+
+    res.redirect(url);
+  });
+
   );
 
   return router;
