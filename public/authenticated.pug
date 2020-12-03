@@ -1,0 +1,15 @@
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Authenticated
+  body
+    p Authenticated successfully.
+
+    script(type='text/javascript').
+      function test() {
+        window.opener.authenticateCallback(!{JSON.stringify(accessToken)});
+        window.close();
+      }
+
+      test();
