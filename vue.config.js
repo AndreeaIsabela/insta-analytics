@@ -1,4 +1,6 @@
 module.exports = {
+  outputDir: 'build/client/',
+
   chainWebpack: config => {
     config.module
       .rule('pug')

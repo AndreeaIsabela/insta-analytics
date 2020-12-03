@@ -38,10 +38,10 @@ export async function expressLoader(app: express.Express, router: express.Router
   app.use(config.api.prefix, router);
 
   // Serve static files
-  app.use(express.static(join(__dirname, '../../dist')));
+  app.use(express.static(join(__dirname, '../../build/client')));
 
   app.get('*', (req, res) => {
-    res.sendFile(join(__dirname, '../../dist/index.html'));
+    res.sendFile(join(__dirname, '../../build/client/index.html'));
   });
 
   app.use(morgan(config.loggerFormat));
