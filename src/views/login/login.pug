@@ -1,3 +1,4 @@
 div
-  h1 Login Page
-  h4 Ceva : {{ceva}}
+  button.btn.btn-primary.my-4(@click.prevent="login('facebook')") Login with Facebook
+  br
+  button.btn.btn-primary(@click.prevent="login('instagram')") Login with Instagram

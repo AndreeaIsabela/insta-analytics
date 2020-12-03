@@ -29,7 +29,7 @@ export async function expressLoader(app: express.Express, router: express.Router
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  app.set('views', join(__dirname, '../../public/'));
+  app.set('views', join(__dirname, '../../client/'));
   app.set('view engine', 'pug');
 
   app.use(passport.initialize());

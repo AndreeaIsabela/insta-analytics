@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Login from '../views/login/Login.vue'
+import Login from '@/views/login/Login.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -10,17 +10,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/albums',
     name: 'Albums',
-    component: () => import(/* webpackChunkName: "albums" */ '../views/albums/Albums.vue')
+    component: () => import(/* webpackChunkName: "albums" */ '@/views/albums/Albums.vue')
   },
   {
     path: '/stats',
     name: 'Stats',
-    component: () => import(/* webpackChunkName: "stats" */ '../views/stats/Stats.vue')
+    component: () => import(/* webpackChunkName: "stats" */ '@/views/stats/Stats.vue')
   },
   {
     path: '/photos',
     name: 'Photos',
-    component: () => import(/* webpackChunkName: "photos" */ '../views/photos/Photos.vue')
+    component: () => import(/* webpackChunkName: "photos" */ '@/views/photos/Photos.vue')
   }
 ]
 
