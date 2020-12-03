@@ -6,8 +6,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "build:server": "tsc --project server/tsconfig.json",
     "dev:server": "nodemon",
-    "debug": "nodemon --exec DEBUG=express:* node --inspect-brk=127.0.0.1:5858 -r ts-node/register server/app.ts"
+    "debug": "nodemon --exec DEBUG=express:* node --inspect-brk=127.0.0.1:5858 -r ts-node/register server/app.ts",
+    "start": "node build/server/app.js"
   },
   "dependencies": {
     "@amcharts/amcharts4": "4.5.10",
