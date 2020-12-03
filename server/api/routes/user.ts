@@ -38,6 +38,36 @@ export function userRouter(): Router {
     res.redirect(url);
   });
 
+  /**
+   * Callback route used for Instagram authentication.
+   */
+  router.get('/user/auth/instagram/redirect',
+    async (req: Request, res: Response): Promise<void> => {
+      try {
+        const code: string = req.query.code as string;
+        const url: string = 'https://api.instagram.com/oauth/access_token';
+        const body = qs.stringify({
+          'client_id': config.instagram.clientID,
+          'client_secret': config.instagram.clientSecret,
+          'grant_type': 'authorization_code',
+          'redirect_uri': config.instagram.callbackURL,
+          'code': code
+        });
+
+        const { data } = await axios({
+          method: 'post',
+          url,
+          data: body,
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+          }
+        });
+
+        res.render('authenticated', { accessToken: data.access_token });
+      } catch (error) {
+        res.sendStatus(500);
+      }
+    }
   );
 
   return router;
