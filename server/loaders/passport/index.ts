@@ -1,4 +1,3 @@
-import { instagramStrategy } from './strategies/instagram';
 
 export async function passportLoader(passport): Promise<void> {
   /**
@@ -15,5 +14,4 @@ export async function passportLoader(passport): Promise<void> {
     done(null, user);
   });
 
-  instagramStrategy(passport);
 };
