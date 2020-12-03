@@ -27,9 +27,15 @@ export async function expressLoader(app: express.Express, router: express.Router
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
+  app.set('views', join(__dirname, '../../public/'));
+  app.set('view engine', 'pug');
+
+  app.use(passport.initialize());
+
   // Load API routes
   app.use(config.api.prefix, router);
 
+  // Serve static files
   app.use(express.static(join(__dirname, '../../dist')));
 
   app.get('*', (req, res) => {
@@ -37,6 +43,4 @@ export async function expressLoader(app: express.Express, router: express.Router
   });
 
   app.use(morgan(config.loggerFormat));
-
-  app.use(passport.initialize());
 }
