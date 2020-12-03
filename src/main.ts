@@ -1,7 +1,12 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+
 import './registerServiceWorker'
 import router from './router'
-import store from './store'
+import { createStore, storeSymbol } from './store'
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App)
+app.config.globalProperties.window = window
+
+app.provide(storeSymbol, createStore())
+app.use(router).mount('#app')
