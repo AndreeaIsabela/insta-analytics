@@ -1,13 +1,12 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
+
+import { useStore } from '@/store'
 
 const Albums = defineComponent({
   setup () {
-    const ceva = ref('altceva')
+    const store = useStore()
 
-    // expose to template
-    return {
-      ceva
-    }
+    return { store }
   }
 })
 
