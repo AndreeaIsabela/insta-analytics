@@ -9,7 +9,7 @@ export const createStore = () => {
     token: localStorage.getItem('accessToken') || '',
     isLoggedIn: !!localStorage.getItem('accessToken'),
     photos: [],
-    found: false
+    albums: []
   })
 
   const auth = (token: string) => {

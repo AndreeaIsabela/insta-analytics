@@ -4,5 +4,5 @@ export interface State {
   token: string;
   isLoggedIn: boolean;
   photos: Photo[];
-  found: boolean;
+  albums: Photo[];
 }
