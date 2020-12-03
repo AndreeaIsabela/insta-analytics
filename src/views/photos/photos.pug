@@ -1,0 +1,6 @@
+.row
+  .col-12.mb-3(v-if="store.state.photos.length" v-for="(photo, index) in store.state.photos" :key="index")
+    img.photo(:src="photo.media_url")
+
+  .col-12(v-else)
+    p.text-center You don't have any photo {{ store.state }}

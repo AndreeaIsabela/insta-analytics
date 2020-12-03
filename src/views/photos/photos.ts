@@ -1,13 +1,12 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, inject } from 'vue'
+
+import { storeSymbol } from '@/store'
 
 const Photos = defineComponent({
   setup () {
-    const ceva = ref('altceva')
+    const store = inject(storeSymbol)
 
-    // expose to template
-    return {
-      ceva
-    }
+    return { store }
   }
 })
 

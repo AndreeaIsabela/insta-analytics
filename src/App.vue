@@ -1,7 +1,8 @@
 <template lang="pug">
-div
+.container
   #nav
     router-link(to="/") Home
+    router-link.ml-3(to="/photos") Photos
   router-view
 </template>
 
