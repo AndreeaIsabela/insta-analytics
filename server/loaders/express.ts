@@ -19,7 +19,9 @@ export async function expressLoader(app: express.Express, router: express.Router
   // It shows the real origin IP in the heroku or Cloudwatch logs
   app.enable('trust proxy');
 
-  app.use(helmet());
+  app.use(helmet({
+    contentSecurityPolicy: false
+  }));
 
   app.use(compression());
 
