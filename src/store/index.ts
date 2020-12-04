@@ -9,7 +9,7 @@ export const createStore = () => {
     token: localStorage.getItem('accessToken') || '',
     isLoggedIn: !!localStorage.getItem('accessToken'),
     photos: [],
-    found: false
+    albums: []
   })
 
   const auth = (token: string) => {
@@ -17,18 +17,28 @@ export const createStore = () => {
     localStorage.setItem('accessToken', token)
   }
 
+  const setAlbums = (photos: Photo[]) => {
+    photos.forEach((photo: Photo) => {
+      if (photo.media_type !== 'IMAGE') {
+        state.albums.push(photo)
+      }
+    })
+  }
+
   const setPhotos = (photos: Photo[]) => {
     photos.forEach((photo: Photo) => {
       if (photo.media_type === 'IMAGE') {
         state.photos.push(photo)
-        state.found = true
       }
     })
-
-    console.log(state.photos)
   }
 
-  return { auth, setPhotos, state: readonly(state) }
+  return {
+    auth,
+    setAlbums,
+    setPhotos,
+    state: readonly(state)
+  }
 }
 
 export const useStore = () => inject(storeSymbol)

@@ -1,10 +1,10 @@
-import { defineComponent, inject } from 'vue'
+import { defineComponent } from 'vue'
 
-import { storeSymbol } from '@/store'
+import { useStore } from '@/store'
 
 const Photos = defineComponent({
   setup () {
-    const store = inject(storeSymbol)
+    const store = useStore()
 
     return { store }
   }

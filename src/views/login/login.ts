@@ -26,6 +26,7 @@ const LoginView = defineComponent({
           const { data } = await api.instagram.getUserMedia(token)
 
           store.setPhotos(data)
+          store.setAlbums(data)
 
           router.push({ name: 'Photos' })
         } catch (error) {
