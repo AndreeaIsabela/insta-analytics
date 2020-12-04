@@ -1,10 +1,25 @@
 <template lang="pug">
-.container
-  #nav
-    router-link(to="/") Home
-    router-link.ml-3(to="/photos") Photos
+div
+  navbar
   router-view
 </template>
+
+<script lang="ts" >
+import { defineComponent } from 'vue'
+import Navbar from './components/navbar/Navbar.vue'
+
+const App = defineComponent({
+  components: {
+    navbar: Navbar
+  },
+  setup () {
+    return {
+    }
+  }
+})
+
+export default App
+</script>
 
 <style lang="stylus">
 #app
@@ -13,5 +28,4 @@
   -moz-osx-font-smoothing grayscale
   text-align center
   color #2c3e50
-  margin-top 60px
 </style>
