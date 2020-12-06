@@ -4,7 +4,7 @@ import { IConfig } from '../types/IConfig';
 
 const dotenvConfig: dotenv.DotenvConfigOutput = dotenv.config();
 
-if (dotenvConfig.error) {
+if (process.env.NODE_ENV === 'debug' && dotenvConfig.error) {
   throw new Error('Could not find .env file');
 }
 
