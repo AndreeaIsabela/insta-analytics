@@ -4,10 +4,10 @@ div
       .card
         img.photo.card-img-top(:src="photo.media_url")
         .card-body
-          p.card-text(v-if="photo.caption")
-            .font-weight-bold {{photo.username}}: 
-            span.caption {{photo.caption}}
-          p.card-text
+          p.card-text.text-left.caption(v-if="photo.caption")
+            span.font-weight-bold {{photo.username}}: 
+            span.captionText {{photo.caption}}
+          p.card-text.text-left
             small.text-muted Posted {{getTime(photo.timestamp)}}
   .row(v-else)
     .col-12
