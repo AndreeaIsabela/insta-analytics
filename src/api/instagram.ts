@@ -19,7 +19,7 @@ export class InstagramApi {
    * @returns {Promise<AxiosResponse>}
    */
   async getUserMedia (token: string): Promise<AxiosResponse> {
-    const fields = 'id,media_type,media_url,timestamp'
+    const fields = 'id,media_type,media_url,timestamp,caption,username'
     const url = `https://graph.instagram.com/me/media?fields=${fields}&access_token=${token}`
 
     const { data } = await this.http.get(url)
