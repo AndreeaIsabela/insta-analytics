@@ -1,6 +1,6 @@
-nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
+nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top(v-bind:class="{ purpleNav: !isHome }")
   .container
-    a.navbar-brand.js-scroll-trigger(href='#page-top') Instagram Analytics
+    router-link.navbar-brand.js-scroll-trigger(to="/") Instagram Analytics
     button.navbar-toggler.navbar-toggler-right(type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation')
       | Menu
       i.fas.fa-bars

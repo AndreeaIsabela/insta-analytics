@@ -1,12 +1,14 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 const Navbar = defineComponent({
   setup () {
-    const ceva = ref('altceva')
+    const route = useRoute()
+    const isHome = computed(() => route.name === 'Login')
 
     // expose to template
     return {
-      ceva
+      isHome
     }
   }
 })
