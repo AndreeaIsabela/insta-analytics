@@ -8,7 +8,7 @@ div
             .font-weight-bold {{photo.username}}: 
             span.caption {{photo.caption}}
           p.card-text
-            small.text-muted Posted {{time(photo.timestamp)}}
+            small.text-muted Posted {{getTime(photo.timestamp)}}
   .row(v-else)
     .col-12
       p.text-center.noContent

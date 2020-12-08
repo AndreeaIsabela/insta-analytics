@@ -6,11 +6,11 @@ import { useStore } from '@/store'
 const Photos = defineComponent({
   setup () {
     const store = useStore()
-    const time = computed((date: string) => moment(date).fromNow())
+    const getTime = (date: string) => moment(date).fromNow()
 
     return {
       store,
-      time
+      getTime
     }
   }
 })
