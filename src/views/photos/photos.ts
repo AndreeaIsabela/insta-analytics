@@ -1,12 +1,17 @@
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+import moment from 'moment'
 
 import { useStore } from '@/store'
 
 const Photos = defineComponent({
   setup () {
     const store = useStore()
+    const time = computed((date: string) => moment(date).fromNow())
 
-    return { store }
+    return {
+      store,
+      time
+    }
   }
 })
 
