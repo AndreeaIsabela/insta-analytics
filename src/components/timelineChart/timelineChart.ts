@@ -68,7 +68,7 @@ const TimelineChart = defineComponent({
       series.stacked = false
       series.minBulletDistance = 20
       series.tooltip.fontSize = '12px'
-      series.tooltipText = '{name.value}: [bold]{valueY}[/]'
+      series.tooltipText = '{name}: [bold]{valueY}[/]'
       series.fill = color(seriesColor)
 
       const bulletType = 'circle'
