@@ -12,3 +12,5 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top(v-bind:class="{ purpl
           router-link.ml-3(to="/media") Media
         li.nav-item
           router-link.ml-3(to="/stats") Statistics
+        li.nav-item
+          router-link.ml-3(v-on:click="logout") Logout

@@ -22,9 +22,17 @@ export const createStore = () => {
     })
   }
 
+  const logout = () => {
+    localStorage.removeItem('accessToken')
+    state.media = []
+    state.isLoggedIn = false
+    state.token = ''
+  }
+
   return {
     auth,
     setMedia,
+    logout,
     state: readonly(state)
   }
 }
