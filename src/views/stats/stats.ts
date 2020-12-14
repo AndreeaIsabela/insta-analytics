@@ -18,7 +18,7 @@ const Stats = defineComponent({
       for (const photo of store.state.media) {
         const date = getDate(photo.timestamp)
         const dateIndex = data.findIndex((el: { date: string; photos: number }) => el.date === date)
-        if (dateIndex) {
+        if (dateIndex > -1) {
           data[dateIndex].photos += 1
         } else {
           const photos = 1
