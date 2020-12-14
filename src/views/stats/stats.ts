@@ -19,10 +19,10 @@ const Stats = defineComponent({
         const date = getDate(photo.timestamp)
         const dateIndex = data.findIndex((el: { date: string; value: number }) => el.date === date)
         if (dateIndex) {
-          data[dateIndex].value += 1
+          data[dateIndex].photos += 1
         } else {
-          const value = 1
-          data.push({ date, value })
+          const photos = 1
+          data.push({ date, photos })
         }
       }
     })
