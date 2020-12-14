@@ -16,16 +16,18 @@ const App = defineComponent({
   components: {
     navbar: Navbar
   },
-  async setup () {
+  setup () {
     const store: any = useStore()
     const route = useRoute()
     const isHome = computed(() => route.name === 'Login')
     const token: string | null = localStorage.getItem('accessToken')
-
-    if (token) {
-      const { data } = await api.instagram.getUserMedia(token)
-      store.setMedia(data)
+    const checkToken = async () => {
+      if (token) {
+        const { data } = await api.instagram.getUserMedia(token)
+        store.setMedia(data)
+      }
     }
+    checkToken()
     return {
       isHome
     }
