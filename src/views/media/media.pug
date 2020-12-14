@@ -1,6 +1,6 @@
 div
-  .grid-container.card-group(v-if="store.state.photos.length")
-    .grid-item.mb-3(v-for="(photo, index) in store.state.photos" :key="index")
+  .grid-container.card-group(v-if="store.state.media.length")
+    .grid-item.mb-3(v-for="(photo, index) in store.state.media" :key="index")
       .card
         img.photo.card-img-top(:src="photo.media_url")
         .card-body
