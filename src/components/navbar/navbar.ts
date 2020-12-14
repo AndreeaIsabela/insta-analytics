@@ -10,18 +10,16 @@ const Navbar = defineComponent({
     const store: any = useStore()
 
     const isHome = computed(() => route.name === 'Login')
-    const isAuthenticated = computed(() => !!localStorage.getItem('accessToken'))
+    // const isAuthenticated = computed(() => !!localStorage.getItem('accessToken'))
     const logout = () => {
       store.logout()
       router.push({ name: 'Login' })
     }
 
-    // expose to template
     return {
       store,
       logout,
-      isHome,
-      isAuthenticated
+      isHome
     }
   }
 })

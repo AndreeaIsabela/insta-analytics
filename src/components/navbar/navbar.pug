@@ -4,7 +4,7 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top(v-bind:class="{ purpl
     button.navbar-toggler.navbar-toggler-right(type='button' data-toggle='collapse' data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation')
       | Menu
       i.fas.fa-bars
-    #navbarResponsive.collapse.navbar-collapse(v-if="isAuthenticated")
+    #navbarResponsive.collapse.navbar-collapse(v-if="store.state.isLoggedIn")
       ul.navbar-nav.ml-auto
         li.nav-item
           router-link(to="/") Home
@@ -13,4 +13,4 @@ nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top(v-bind:class="{ purpl
         li.nav-item
           router-link.ml-3(to="/stats") Statistics
         li.nav-item
-          router-link.ml-3(v-on:click="logout") Logout
+          a.ml-3(href="#" v-on:click.prevent="logout") Logout
