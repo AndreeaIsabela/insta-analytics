@@ -8,19 +8,14 @@ const routes: Array<RouteRecordRaw> = [
     component: Login
   },
   {
-    path: '/albums',
-    name: 'Albums',
-    component: () => import(/* webpackChunkName: "albums" */ '@/views/albums/Albums.vue')
-  },
-  {
     path: '/stats',
     name: 'Stats',
     component: () => import(/* webpackChunkName: "stats" */ '@/views/stats/Stats.vue')
   },
   {
-    path: '/photos',
-    name: 'Photos',
-    component: () => import(/* webpackChunkName: "photos" */ '@/views/photos/Photos.vue')
+    path: '/media',
+    name: 'Media',
+    component: () => import(/* webpackChunkName: "media" */ '@/views/media/Media.vue')
   }
 ]
 

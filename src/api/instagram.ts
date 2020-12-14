@@ -13,7 +13,7 @@ export class InstagramApi {
   }
 
   /**
-   * Get all Instagram photos for the given user.
+   * Get all Instagram media for the given user.
    *
    * @param {string} token
    * @returns {Promise<AxiosResponse>}

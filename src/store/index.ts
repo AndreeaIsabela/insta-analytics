@@ -8,8 +8,7 @@ export const createStore = () => {
   const state: State = reactive({
     token: localStorage.getItem('accessToken') || '',
     isLoggedIn: !!localStorage.getItem('accessToken'),
-    photos: [],
-    albums: []
+    media: []
   })
 
   const auth = (token: string) => {
@@ -17,26 +16,15 @@ export const createStore = () => {
     localStorage.setItem('accessToken', token)
   }
 
-  const setAlbums = (photos: Photo[]) => {
-    photos.forEach((photo: Photo) => {
-      if (photo.media_type !== 'IMAGE') {
-        state.albums.push(photo)
-      }
-    })
-  }
-
-  const setPhotos = (photos: Photo[]) => {
-    photos.forEach((photo: Photo) => {
-      if (photo.media_type === 'IMAGE') {
-        state.photos.push(photo)
-      }
+  const setMedia = (media: Photo[]) => {
+    media.forEach((photo: Photo) => {
+      state.media.push(photo)
     })
   }
 
   return {
     auth,
-    setAlbums,
-    setPhotos,
+    setMedia,
     state: readonly(state)
   }
 }

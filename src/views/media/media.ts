@@ -1,9 +1,9 @@
-import { defineComponent, computed } from 'vue'
+import { defineComponent } from 'vue'
 import moment from 'moment'
 
 import { useStore } from '@/store'
 
-const Photos = defineComponent({
+const Media = defineComponent({
   setup () {
     const store = useStore()
     const getTime = (date: string) => moment(date).fromNow()
@@ -15,4 +15,4 @@ const Photos = defineComponent({
   }
 })
 
-export default Photos
+export default Media

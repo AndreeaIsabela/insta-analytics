@@ -9,13 +9,23 @@ import { computed, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import Navbar from './components/navbar/Navbar.vue'
 
+import { api } from '@/api'
+import { useStore } from '@/store'
+
 const App = defineComponent({
   components: {
     navbar: Navbar
   },
-  setup () {
+  async setup () {
+    const store: any = useStore()
     const route = useRoute()
     const isHome = computed(() => route.name === 'Login')
+    const token: string | null = localStorage.getItem('accessToken')
+
+    if (token) {
+      const { data } = await api.instagram.getUserMedia(token)
+      store.setMedia(data)
+    }
     return {
       isHome
     }

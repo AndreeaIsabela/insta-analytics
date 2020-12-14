@@ -1,6 +1,0 @@
-.row
-  .col-12.mb-3(v-if="store.state.albums.length" v-for="(album, index) in store.state.albums" :key="index")
-    img.album(:src="album.media_url")
-
-  .col-12(v-else)
-    p.text-center You don't have any albums

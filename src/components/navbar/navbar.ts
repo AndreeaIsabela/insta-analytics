@@ -5,10 +5,12 @@ const Navbar = defineComponent({
   setup () {
     const route = useRoute()
     const isHome = computed(() => route.name === 'Login')
+    const isAuthenticated = computed(() => !!localStorage.getItem('accessToken'))
 
     // expose to template
     return {
-      isHome
+      isHome,
+      isAuthenticated
     }
   }
 })
