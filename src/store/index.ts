@@ -14,6 +14,7 @@ export const createStore = () => {
   const auth = (token: string) => {
     state.token = token
     localStorage.setItem('accessToken', token)
+    state.isLoggedIn = true
   }
 
   const setMedia = (media: Photo[]) => {
