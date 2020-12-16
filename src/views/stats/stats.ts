@@ -19,9 +19,10 @@ const Stats = defineComponent({
     const addMediaToData = (mediaList: Photo[], mediaType: string, mediaType2: string, mediaType3: string) => {
       for (const media of mediaList) {
         const date = getDate(media.timestamp)
-        const dateIndex = data.findIndex((el: { date: string; photos: number }) => el.date === date)
+        const dateIndex = data.findIndex((el: any) => el.date === date)
 
         if (dateIndex > -1) {
+          console.log(data[dateIndex][mediaType], 'data[dateIndex][mediaType]')
           data[dateIndex][mediaType] += 1
         } else {
           const obj = {
@@ -30,6 +31,7 @@ const Stats = defineComponent({
             [mediaType2]: 0,
             [mediaType3]: 0
           }
+          console.log(obj, '->  Obj')
           data.push(obj)
         }
       }

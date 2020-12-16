@@ -7,7 +7,8 @@ const Media = defineComponent({
   setup () {
     const store: any = useStore()
     const media = store.state.media
-    const allMedia = media.photos.concat(media.video.concat(media.album))
+    const temp = media.video.concat(media.album)
+    const allMedia = media.photos.concat(temp)
     const getTime = (date: string) => moment(date).fromNow()
 
     return {
