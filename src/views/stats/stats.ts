@@ -21,8 +21,7 @@ const Stats = defineComponent({
         const date = getDate(media.timestamp)
         const dateIndex = data.findIndex((el: any) => el.date === date)
 
-        if (dateIndex > -1) {
-          console.log(data[dateIndex][mediaType], 'data[dateIndex][mediaType]')
+        if (dateIndex !== -1) {
           data[dateIndex][mediaType] += 1
         } else {
           const obj = {
@@ -31,7 +30,6 @@ const Stats = defineComponent({
             [mediaType2]: 0,
             [mediaType3]: 0
           }
-          console.log(obj, '->  Obj')
           data.push(obj)
         }
       }
@@ -39,6 +37,15 @@ const Stats = defineComponent({
     addMediaToData(media.photos, 'photos', 'video', 'album')
     addMediaToData(media.video, 'video', 'photos', 'album')
     addMediaToData(media.album, 'album', 'photos', 'video')
+    data.sort((a: any, b: any) => {
+      if (a.date < b.date) {
+        return -1
+      }
+      if (a.date > b.date) {
+        return 1
+      }
+      return 0
+    })
     // expose to template
     return {
       data
