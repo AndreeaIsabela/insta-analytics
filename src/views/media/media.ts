@@ -5,11 +5,14 @@ import { useStore } from '@/store'
 
 const Media = defineComponent({
   setup () {
-    const store = useStore()
+    const store: any = useStore()
+    const media = store.state.media
+    const allMedia = media.photos.concat(media.video.concat(media.album))
     const getTime = (date: string) => moment(date).fromNow()
 
     return {
       store,
+      allMedia,
       getTime
     }
   }
