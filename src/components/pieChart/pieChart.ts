@@ -33,11 +33,11 @@ const PieChartComponent = defineComponent({
     let pieSeries: any | null = reactive({})
     let chart: any | null = reactive({})
     const colorList: string[] = [
-      '#B169DC',
-      '#ED008C',
-      '#9ED228',
-      '#FF7E4C',
-      '#D14972'
+      '#8134AF',
+      '#FEDA77',
+      '#DD2A7B',
+      '#515BD4',
+      '#F58529'
     ]
     const { categories, data, name, value, category } = toRefs(props)
 

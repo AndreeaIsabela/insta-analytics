@@ -24,11 +24,11 @@ const TimelineChart = defineComponent({
   setup (props) {
     let chart: any | null = reactive({})
     const colorList: string[] = [
-      '#24262B',
-      '#ED008C',
-      '#00FCD4',
-      '#FF7E4C',
-      '#850082'
+      '#8134AF',
+      '#FEDA77',
+      '#DD2A7B',
+      '#515BD4',
+      '#F58529'
     ]
     const { categories, data, name } = toRefs(props)
 
