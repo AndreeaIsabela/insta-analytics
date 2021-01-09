@@ -16,6 +16,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/media',
     name: 'Media',
     component: () => import(/* webpackChunkName: "media" */ '@/views/media/Media.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    component: () => import(/* webpackChunkNameL "404" */ '@/views/notFound/NotFound.vue')
   }
 ]
 
