@@ -1,28 +1,6 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Login from '@/views/login/Login.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/stats',
-    name: 'Stats',
-    component: () => import(/* webpackChunkName: "stats" */ '@/views/stats/Stats.vue')
-  },
-  {
-    path: '/media',
-    name: 'Media',
-    component: () => import(/* webpackChunkName: "media" */ '@/views/media/Media.vue')
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    name: '404',
-    component: () => import(/* webpackChunkNameL "404" */ '@/views/notFound/NotFound.vue')
-  }
-]
+import { routes } from './routes'
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
