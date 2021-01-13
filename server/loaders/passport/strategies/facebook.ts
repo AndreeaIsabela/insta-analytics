@@ -9,7 +9,7 @@ import { IUser } from '../../../types/IUser';
  * @param {} passport
  * @returns {Promise<void> }
  */
-export async function facebookStrategy(passport,): Promise<void> {
+export async function facebookStrategy(passport): Promise<void> {
   passport.use(new FacebookStrategy({
       clientID: config.facebook.clientID,
       clientSecret: config.facebook.clientSecret,

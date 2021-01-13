@@ -6,7 +6,7 @@ import './registerServiceWorker'
 import { routerFactory } from './router'
 import { createStore, storeSymbol } from './store'
 
-import { unauthorizedInterceptor } from './interceptors/unautorized'
+import { unauthorizedInterceptor } from './interceptors/unauthorized'
 
 const store = createStore()
 const router = routerFactory(store)
