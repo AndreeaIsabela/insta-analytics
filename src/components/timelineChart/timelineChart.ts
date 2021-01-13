@@ -89,7 +89,7 @@ const TimelineChart = defineComponent({
       chart = create(`chart-${name.value}`, XYChart)
       chart.responsive.enabled = true
       // Set input format for the dates
-      chart.dateFormatter.inputDateFormat = 'MM-dd-yyyy'
+      chart.dateFormatter.inputDateFormat = 'YYYY MM DD'
       // Create axes
       const dateAxis = chart.xAxes.push(new DateAxis())
       dateAxis.renderer.minGridDistance = 50
