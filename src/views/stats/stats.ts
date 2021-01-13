@@ -14,7 +14,7 @@ const Stats = defineComponent({
     const store: any = useStore()
     const media = store.state.media
     const getDate = (timestamp: string) => {
-      return moment(timestamp).format('L')
+      return moment(timestamp).format('YYYY MM Do')
     }
     const addMediaToData = (mediaList: Photo[], mediaType: string, mediaType2: string, mediaType3: string) => {
       for (const media of mediaList) {
