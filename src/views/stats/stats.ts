@@ -25,7 +25,7 @@ const Stats = defineComponent({
           data[dateIndex][mediaType] += 1
         } else {
           const obj = {
-            dateObj: date, 
+            dateObj: date,
             date: new Date(media.timestamp),
             [mediaType]: 1,
             [mediaType2]: 0,
