@@ -1,5 +1,5 @@
-import { defineComponent, reactive, watch, nextTick, toRefs, onBeforeUnmount } from 'vue'
-import { create, color, ColorSet, MouseCursorStyle } from '@amcharts/amcharts4/core'
+import { defineComponent, reactive, watch, nextTick, toRefs, onBeforeUnmount, onMounted } from 'vue'
+import { create, color, ColorSet, MouseCursorStyle, Disposer } from '@amcharts/amcharts4/core'
 import { PieChart, PieSeries, Legend } from '@amcharts/amcharts4/charts'
 
 const PieChartComponent = defineComponent({
@@ -21,8 +21,8 @@ const PieChartComponent = defineComponent({
       default: 'chartdiv'
     },
     value: {
-      type: Number,
-      default: 0
+      type: String,
+      default: ''
     },
     category: {
       type: String,
@@ -39,13 +39,13 @@ const PieChartComponent = defineComponent({
       '#515BD4',
       '#F58529'
     ]
-    const { categories, data, name, value, category } = toRefs(props)
+    const { data, name, value, category } = toRefs(props)
 
     const createSeries = (): void => {
       const white = '#FFFFFF'
       pieSeries = chart.series.push(new PieSeries())
       pieSeries.dataFields.value = value.value
-      pieSeries.dataFields.category = category.value || categories.value[0]
+      pieSeries.dataFields.category = category.value
       pieSeries.slices.template.stroke = color(white)
       pieSeries.slices.template.strokeWidth = 2
       pieSeries.slices.template.strokeOpacity = 1
@@ -59,12 +59,8 @@ const PieChartComponent = defineComponent({
     const createSeriesAnimations = (): void => {
       pieSeries.hiddenState.properties.endAngle = -90
       pieSeries.hiddenState.properties.opacity = 1
-      pieSeries.labels.template.text = '{category.value}: {value.value}'
+      pieSeries.labels.template.text = '{category}: {value}'
       pieSeries.labels.template.fontSize = '14px'
-      const screenWidth = window.innerWidth
-      if (screenWidth < 992) {
-        pieSeries.labels.template.text = ''
-      }
     }
 
     const setColors = (): void => {
@@ -76,7 +72,7 @@ const PieChartComponent = defineComponent({
     const createLegend = (): void => {
       chart.legend = new Legend()
       chart.legend.useDefaultMarker = false
-      chart.legend.valueLabels.template.text = '{value.value}'
+      chart.legend.valueLabels.template.text = '{value}'
       chart.legend.labels.template.fontSize = '14px'
       chart.legend.valueLabels.template.fontSize = '14px'
       const markerTemplate = chart.legend.markers.template
@@ -102,10 +98,11 @@ const PieChartComponent = defineComponent({
 
     watch(data, async (): Promise<void> => {
       await nextTick()
-      if (chart) {
-        chart.dispose()
-      }
       initPieChart()
+    })
+
+    onMounted(async (): Promise<void> => {
+      await initPieChart()
     })
 
     onBeforeUnmount((): void => {
