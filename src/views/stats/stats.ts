@@ -4,15 +4,31 @@ import moment from 'moment'
 import { useStore } from '@/store'
 import TimelineChart from '../../components/timelineChart/TimelineChart.vue'
 import { Photo } from '@/types/photo'
+import PieChart from '../../components/pieChart/PieChart.vue'
 
 const Stats = defineComponent({
   components: {
-    TimelineChart
+    TimelineChart,
+    PieChart
   },
   setup () {
     const data: any = reactive([])
     const store: any = useStore()
     const media = store.state.media
+    const pieChartData = [
+      {
+        name: 'photos',
+        number: media.photos.length
+      },
+      {
+        name: 'video',
+        number: media.video.length
+      },
+      {
+        name: 'album',
+        number: media.album.length
+      }
+    ]
     const getDate = (timestamp: string) => {
       return moment(timestamp).format('YYYY-MM-DD')
     }
@@ -49,7 +65,8 @@ const Stats = defineComponent({
     })
     // expose to template
     return {
-      data
+      data,
+      pieChartData
     }
   }
 })
