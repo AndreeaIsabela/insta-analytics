@@ -20,7 +20,7 @@ const Stats = defineComponent({
     const token: string | null = localStorage.getItem('accessToken')
     const checkToken = async () => {
       if (token) {
-        const  insights  = await api.instagram.getUserInsights(token)
+        const insights = await api.instagram.getUserInsights(token)
         console.log(insights)
         console.log(insights.data)
       }

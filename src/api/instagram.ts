@@ -26,13 +26,13 @@ export class InstagramApi {
 
     return data
   }
-  
   /**
    * Get Instagram insights for the given user.
    *
    * @param {string} token
    * @returns {Promise<AxiosResponse>}
    */
+
   async getUserInsights (token: string): Promise<AxiosResponse> {
     const metrics = 'audience_city,audience_gender_age,audience_gender_age'
     const url = `https://graph.facebook.com/v9.0/me/insights?metric=${metrics}&period=lifetime&access_token=${token}`
@@ -41,5 +41,4 @@ export class InstagramApi {
 
     return data
   }
-
 }
