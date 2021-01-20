@@ -1,5 +1,5 @@
 import { defineComponent, ref, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import moment from 'moment'
 
 import { useStore } from '@/store'
@@ -14,12 +14,12 @@ const Media = defineComponent({
     const allMedia = media.photos.concat(temp)
 
     const getTime = (date: string) => moment(date).fromNow()
-    const getDetails = (photoId: string) => router.push({name: 'MediaDetails', params: {photoId}})
+    const getDetails = (photoId: string) => router.push( { name: 'MediaDetails', params: { photoId } })
 
     const resources = computed(() => {
-      const files = allMedia.filter((media : any) => {
+      const files = allMedia.filter((media: any) => {
         return (
-          media.caption.toLowerCase().indexOf(searchedWord.toLowerCase()) >= 0 
+          media.caption.toLowerCase().indexOf(searchedWord.toLowerCase()) >= 0
         )
       })
       return files
@@ -28,7 +28,7 @@ const Media = defineComponent({
     return {
       store,
       allMedia,
-      searchedWord,
+      searchedWord: searchedWord.value,
       resources,
       getTime,
       getDetails
