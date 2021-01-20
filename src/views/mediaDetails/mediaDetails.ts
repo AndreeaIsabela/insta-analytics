@@ -1,4 +1,4 @@
-import { defineComponent, reactive, onMounted } from 'vue'
+import { defineComponent, reactive, onMounted, toRefs, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import moment from 'moment'
 
@@ -9,22 +9,26 @@ const MediaDetails = defineComponent({
     const route = useRoute()
     const mediaId: string = route.params.id as string
     const token: string | null = localStorage.getItem('accessToken')
-    let mediaDetails: any = reactive({})
+    const mediaDetails: any = reactive({})
 
     const getMediaDetails = async () => {
       if (token) {
-        mediaDetails = await api.instagram.getUserMediaDetails(token, mediaId)
+        mediaDetails.value = await api.instagram.getUserMediaDetails(token, mediaId)
       }
     }
     onMounted(async () => {
       await getMediaDetails()
     })
 
+    watch(mediaDetails, (newValue, oldValue) => {
+      console.log('The new mediaDetails value is: ' + mediaDetails.value)
+    })
+
     const getTime = (date: string) => moment(date).fromNow()
 
     return {
       mediaId,
-      mediaDetails,
+      ...toRefs(mediaDetails),
       getTime
     }
   }
