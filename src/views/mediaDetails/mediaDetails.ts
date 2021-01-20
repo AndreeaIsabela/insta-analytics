@@ -11,7 +11,7 @@ const MediaDetails = defineComponent({
     const token: string | null = localStorage.getItem('accessToken')
 
     const mediaDetails: any = async () => {
-      if (token) await api.instagram.getUserMediaDetails(token, mediaId)
+      if (token) return await api.instagram.getUserMediaDetails(token, mediaId)
     }
 
     const getTime = (date: string) => moment(date).fromNow()
