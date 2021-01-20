@@ -28,7 +28,7 @@ const Media = defineComponent({
     return {
       store,
       allMedia,
-      searchedWord: searchedWord.value,
+      searchedWord,
       resources,
       getTime,
       getDetails

@@ -1,7 +1,7 @@
 div
   .col-md-8.offset-md-2
     .input-group.col-md-12
-      input#link-input.form-control.input(type="search"  aria-describedby="search" placeholder="search" v-model="searchedWord")
+      input#link-input.form-control.input(type="search"  aria-describedby="search" placeholder="search" v-model="searchedWord.value")
   .grid-container.card-group(v-if="resources.length")
     .grid-item.mb-3(v-for="(photo, index) in resources" :key="index")
       .card(v-on:click="getDetails(photo.id)")
