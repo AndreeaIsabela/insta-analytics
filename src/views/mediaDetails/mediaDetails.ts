@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import moment from 'moment'
 
@@ -9,12 +9,15 @@ const MediaDetails = defineComponent({
     const route = useRoute()
     const mediaId: string = route.params.id as string
     const token: string | null = localStorage.getItem('accessToken')
+    let mediaDetails: any = reactive({})
 
     const getMediaDetails = async () => {
-      if (token) return await api.instagram.getUserMediaDetails(token, mediaId)
+      if (token) {
+        mediaDetails = await api.instagram.getUserMediaDetails(token, mediaId)
+      }
     }
+    getMediaDetails()
 
-    const mediaDetails: any = getMediaDetails()
     const getTime = (date: string) => moment(date).fromNow()
 
     return {
