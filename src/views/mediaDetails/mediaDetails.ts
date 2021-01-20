@@ -10,10 +10,11 @@ const MediaDetails = defineComponent({
     const mediaId: string = route.params.id as string
     const token: string | null = localStorage.getItem('accessToken')
 
-    const mediaDetails: any = async () => {
+    const getMediaDetails = async () => {
       if (token) return await api.instagram.getUserMediaDetails(token, mediaId)
     }
 
+    const mediaDetails: any = getMediaDetails()
     const getTime = (date: string) => moment(date).fromNow()
 
     return {
