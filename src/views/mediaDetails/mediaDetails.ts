@@ -14,8 +14,7 @@ const MediaDetails = defineComponent({
     const getTime = (date: string) => moment(date).fromNow()
     const checkToken = async () => {
       if (token) {
-        const { data } = await api.instagram.getUserMediaDetails(token, mediaId)
-        mediaDetails = data
+        mediaDetails = await api.instagram.getUserMediaDetails(token, mediaId)
       }
     }
     checkToken()
