@@ -1,4 +1,4 @@
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import moment from 'moment'
 
@@ -16,7 +16,9 @@ const MediaDetails = defineComponent({
         mediaDetails = await api.instagram.getUserMediaDetails(token, mediaId)
       }
     }
-    getMediaDetails()
+    onMounted(async () => {
+      await getMediaDetails()
+    })
 
     const getTime = (date: string) => moment(date).fromNow()
 
