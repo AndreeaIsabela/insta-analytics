@@ -9,7 +9,7 @@ const MediaDetails = defineComponent({
     const route = useRoute()
     const mediaId: string = route.params.id as string
     const token: string | null = localStorage.getItem('accessToken')
-    let mediaDetails: any = {}
+    let mediaDetails: any = reactive({})
 
     const getMediaDetails = async () => {
       if (token) {
@@ -21,7 +21,7 @@ const MediaDetails = defineComponent({
     })
 
     watch(mediaDetails, (newValue, oldValue) => {
-      console.log('The new mediaDetails value is: ' + mediaDetails)
+      console.log('The new mediaDetails value is: ' + mediaDetails.caption)
     })
 
     const getTime = (date: string) => moment(date).fromNow()
