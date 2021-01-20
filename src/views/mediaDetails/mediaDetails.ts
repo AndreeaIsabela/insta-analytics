@@ -9,11 +9,11 @@ const MediaDetails = defineComponent({
     const route = useRoute()
     const mediaId: string = route.params.id as string
     const token: string | null = localStorage.getItem('accessToken')
-    const mediaDetails: any = reactive({})
+    let mediaDetails: any = {}
 
     const getMediaDetails = async () => {
       if (token) {
-        mediaDetails.value = await api.instagram.getUserMediaDetails(token, mediaId)
+        mediaDetails = await api.instagram.getUserMediaDetails(token, mediaId)
       }
     }
     onMounted(async () => {
@@ -21,14 +21,14 @@ const MediaDetails = defineComponent({
     })
 
     watch(mediaDetails, (newValue, oldValue) => {
-      console.log('The new mediaDetails value is: ' + mediaDetails.value)
+      console.log('The new mediaDetails value is: ' + mediaDetails)
     })
 
     const getTime = (date: string) => moment(date).fromNow()
 
     return {
       mediaId,
-      ...toRefs(mediaDetails),
+      mediaDetails,
       getTime
     }
   }
