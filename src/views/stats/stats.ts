@@ -17,15 +17,8 @@ const Stats = defineComponent({
     const data: any = reactive([])
     const store: any = useStore()
     const media = store.state.media
-    const token: string | null = localStorage.getItem('accessToken')
-    const checkToken = async () => {
-      if (token) {
-        // const insights = await api.instagram.getUserInsights(token)
-        // console.log(insights)
-        // console.log(insights.data)
-      }
-    }
-    checkToken()
+    // const token: string | null = localStorage.getItem('accessToken')
+
     const pieChartData = [
       {
         name: 'photos',

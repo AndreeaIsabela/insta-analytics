@@ -14,12 +14,12 @@ const Media = defineComponent({
     const allMedia = media.photos.concat(temp)
 
     const getTime = (date: string) => moment(date).fromNow()
-    const getDetails = (photoId: string) => router.push({ name: 'MediaDetails', params: { photoId } })
+    const getDetails = (photoId: string) => router.push({ name: 'MediaDetails', params: { id: photoId } })
 
     const resources = computed(() => {
       const files = allMedia.filter((media: any) => {
         return (
-          media.caption.toLowerCase().indexOf(searchedWord.value.toLowerCase()) >= 0
+          media.caption && media.caption.toLowerCase().indexOf(searchedWord.value.toLowerCase()) >= 0
         )
       })
       return files
