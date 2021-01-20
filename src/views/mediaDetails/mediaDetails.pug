@@ -1,2 +1,9 @@
 div
-  h1 Media Details : {{mediaId}}
+  .card
+    img.photo.card-img-top(:src="mediaDetails.media_url")
+    .card-body
+      p.card-text.text-left.caption(v-if="mediaDetails.caption")
+        span.font-weight-bold {{mediaDetails.username}}: 
+        span.captionText {{mediaDetails.caption}}
+      p.card-text.text-left
+        small.text-muted Posted {{getTime(mediaDetails.timestamp)}}
