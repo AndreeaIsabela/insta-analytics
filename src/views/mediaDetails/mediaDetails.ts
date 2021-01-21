@@ -9,7 +9,7 @@ const MediaDetails = defineComponent({
     const route = useRoute()
     const mediaId: string = route.params.id as string
     const token: string | null = localStorage.getItem('accessToken')
-    let mediaDetails: any = reactive({})
+    const mediaDetails: any = reactive({})
 
     const getMediaDetails = async () => {
       if (token) {
