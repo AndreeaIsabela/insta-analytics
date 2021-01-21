@@ -1,12 +1,24 @@
 div
   .card(v-if="mediaDetails.data")
     img.photo.card-img-top(:src="mediaDetails.data.media_url" v-if="mediaDetails.data.media_type != 'CAROUSEL_ALBUM'")
-    #carouselExampleSlidesOnly.carousel.slide(data-ride='carousel' v-else)
+    #carouselExampleIndicators.carousel.slide(data-ride='carousel' v-else)
+      ol.carousel-indicators
+        li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
+        li(data-target='#carouselExampleIndicators' data-slide-to='1')
       .carousel-inner
-        .carousel-item.ative
-          img.d-block.w-100(:src='photo.media_url' alt='First slide')
-        .carousel-item(v-for="(photo, index) in mediaDetails.data.children.data" :key="index" v-if="index!=0")
-          img.d-block.w-100(:src='photo.media_url')
+        .carousel-item.active
+          img.d-block.w-100(:src='mediaDetails.data.children.data[0].media_url' alt='First slide')
+        .carousel-item
+          img.d-block.w-100(:src='mediaDetails.data.children.data[1].media_url' alt='Second slide')
+      a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only Previous
+      a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only Next
+
+        //- .carousel-item(v-for="(photo, index) in mediaDetails.data.children.data" :key="index" v-if="index!=0")
+        //-   img.d-block.w-100(:src='photo.media_url')
     .card-body
       p.card-text.text-left.caption(v-if="mediaDetails.data.caption")
         span.font-weight-bold {{mediaDetails.data.username}}: 
