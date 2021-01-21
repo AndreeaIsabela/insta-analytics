@@ -3,7 +3,7 @@ div
     img.photo.card-img-top(:src="mediaDetails.data.media_url" v-if="mediaDetails.data.media_type != 'CAROUSEL_ALBUM'")
     #carouselExampleSlidesOnly.carousel.slide(data-ride='carousel' v-else)
       .carousel-inner
-        .carousel-item(v-for="(photo, index) in mediaDetails.data.children.data" :key="index" v-bind:class="{active: index == 0}")
+        .carousel-item(v-for="(photo, index) in mediaDetails.data.children.data" :key="index")
           img.d-block.w-100(:src='photo.media_url' alt='First slide')
     .card-body
       p.card-text.text-left.caption(v-if="mediaDetails.data.caption")
