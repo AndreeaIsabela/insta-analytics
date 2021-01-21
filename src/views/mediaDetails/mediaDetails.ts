@@ -13,7 +13,7 @@ const MediaDetails = defineComponent({
 
     const getMediaDetails = async () => {
       if (token) {
-        mediaDetails = await api.instagram.getUserMediaDetails(token, mediaId)
+        mediaDetails.data = await api.instagram.getUserMediaDetails(token, mediaId)
       }
     }
     onMounted(async () => {
@@ -21,7 +21,7 @@ const MediaDetails = defineComponent({
     })
 
     watch(mediaDetails, (newValue, oldValue) => {
-      console.log('The new mediaDetails value is: ' + mediaDetails.caption)
+      console.log('The new mediaDetails value is: ' + mediaDetails.data)
     })
 
     const getTime = (date: string) => moment(date).fromNow()

@@ -1,9 +1,9 @@
 div
-  .card(v-if="mediaDetails")
-    img.photo.card-img-top(:src="mediaDetails.media_url")
+  .card(v-if="mediaDetails.data")
+    img.photo.card-img-top(:src="mediaDetails.data.media_url")
     .card-body
-      p.card-text.text-left.caption(v-if="mediaDetails.caption")
-        span.font-weight-bold {{mediaDetails.username}}: 
-        span.captionText {{mediaDetails.caption}}
+      p.card-text.text-left.caption(v-if="mediaDetails.data.caption")
+        span.font-weight-bold {{mediaDetails.data.username}}: 
+        span.captionText {{mediaDetails.data.caption}}
       p.card-text.text-left
-        small.text-muted Posted {{getTime(mediaDetails.timestamp)}}
+        small.text-muted Posted {{getTime(mediaDetails.data.timestamp)}}
